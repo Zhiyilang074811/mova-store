@@ -1,4 +1,4 @@
-name: CI
+﻿name: CI
 
 on:
   push:
@@ -36,6 +36,12 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Run Prettier format check
+        run: npm run format:check
+
+      - name: Fix unformatted files
+        run: npm run format
+
       - name: Type check
         run: npm run type-check
 
@@ -48,7 +54,6 @@ jobs:
       - name: Build Next.js
         run: npm run build
         env:
-          # Minimal env vars for build
           NEXT_PUBLIC_STELLAR_NETWORK: testnet
           NEXT_PUBLIC_CHECKOUT_CONTRACT_ID: CDUMMY0000000000000000000000000000000000000000000000000
           NEXT_PUBLIC_SUPABASE_URL: https://dummy.supabase.co
