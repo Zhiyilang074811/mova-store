@@ -36,6 +36,12 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Fix unformatted files
+        run: npm run format
+
+      - name: Run Prettier format check
+        run: npm run format:check
+
       - name: Type check
         run: npm run type-check
 
